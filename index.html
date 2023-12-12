@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>This is Hello World</title>
+    <script>
+        async function createCheckoutSession() {
+            const data = {
+                "items": [{
+                    "id": 1,
+                    "quantity": "70"
+                }],
+            };
+            data_json = JSON.stringify(data);
+            console.log(data_json);
+
+            //await fetch('http://localhost:8080/api/create-checkout-session', {
+            await fetch('http://localhost:3000/proxy', {
+                method: 'POST',
+                mode: 'cors',
+                referer: 'http://localhost:8080/map',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: data_json
+            });
+
+            //const result = await response.json();
+            //console.log(result);
+        }
+
+        createCheckoutSession();
+    </script>
+</head>
+
+
+<body>
+    <h1>Hello World</h1>
+
+</body>
+
+</html>
